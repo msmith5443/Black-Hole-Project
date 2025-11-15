@@ -1,13 +1,83 @@
 
-import sys 
-print('Python: {}'.format(sys.version))
-import pandas as pd
+# import sys 
+# print('Python: {}'.format(sys.version))
+# import pandas as pd
+# print("pandas:", pd.__version__)
+# import numpy as np
+# print('numpy: {}'.format(np.__version__))
+# import scipy
+# print('scipy: {}'.format(scipy.__version__))
+# import matplotlib
+# print('matplotlib: {}'.format(matplotlib.__version__))
+# import sklearn 
+# print('sklearn: {}'.format(sklearn.__version__))
+# import requests
+# from pathlib import Path
 
-import numpy
-print('numpy: {}'.format(numpy.__version__))
-import scipy
-print('scipy: {}'.format(scipy.__version__))
-import matplotlib
-print('matplotlib: {}'.format(matplotlib.__version__))
-import sklearn 
-print('sklearn: {}'.format(sklearn.__version__))
+# # ZTF 
+
+# DATA_DIR = Path("data")
+# DATA_DIR.mkdir(exist_ok=True)
+# from io import StringIO
+
+# ZTF_BASE_URL = "https://irsa.ipac.caltech.edu/cgi-bin/ZTF/nph_light_curves"
+
+# def get_ztf_lightcurve_pos(ra_deg, dec_deg):
+#     """
+#     Get a ZTF light curve near (ra_deg, dec_deg).
+#     No login, no extra options, just the defaults.
+#     """
+#     params = {
+#         "POS": f"CIRCLE {ra_deg} {dec_deg} 0.0014",  # 0.0014 deg ~ 5 arcsec
+#         "BANDNAME": "r",                             # just r band for now
+#         "FORMAT": "CSV",
+#     }
+
+#     r = requests.get(ZTF_BASE_URL, params=params, timeout=60)
+#     print("URL used:", r.url)        # so you can see the full request
+#     r.raise_for_status()
+
+#     df = pd.read_csv(StringIO(r.text), comment="#")
+#     return df
+
+# ra_test, dec_test = 255.9302, 11.8654
+
+# df_ztf = get_ztf_lightcurve_pos(ra_test, dec_test)
+
+# print(df_ztf.head())
+# print(df_ztf.columns)
+
+# #{
+# def extract_basic_features(df, time_col="mjd", mag_col="mag"):
+#     """
+#     Take a ZTF light-curve DataFrame and return a few simple summary features.
+#     This will be one ML-row for that object.
+#     """
+#     # keep only time + magnitude, drop NaNs, sort by time
+#     df2 = df[[time_col, mag_col]].dropna().sort_values(time_col)
+
+#     if len(df2) == 0:
+#         return None
+
+#     t = df2[time_col].values
+#     m = df2[mag_col].values
+
+#     feats = {}
+#     feats["n_obs"]    = int(len(df2))
+#     feats["t_span"]   = float(t.max() - t.min())   # total time baseline
+#     feats["mag_min"]  = float(m.min())             # brightest
+#     feats["mag_max"]  = float(m.max())             # faintest
+#     feats["mag_mean"] = float(m.mean())
+#     feats["mag_std"]  = float(m.std())
+
+#     # “peak” = brightest point (smallest mag)
+#     i_peak = m.argmin()
+#     feats["t_peak"]    = float(t[i_peak])
+#     feats["t_to_peak"] = float(t[i_peak] - t.min())
+
+#     return feats
+
+# # use mjd + mag from the table you just got
+# features_one = extract_basic_features(df_ztf, time_col="mjd", mag_col="mag")
+# print(features_one)
+print("Hello World")
