@@ -80,4 +80,4 @@
 # # use mjd + mag from the table you just got
 # features_one = extract_basic_features(df_ztf, time_col="mjd", mag_col="mag")
 # print(features_one)
-print("Hello World")
+print("THIS IS MADDIE TS")
