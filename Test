@@ -1,53 +1,53 @@
 
-# import sys 
-# print('Python: {}'.format(sys.version))
-# import pandas as pd
-# print("pandas:", pd.__version__)
-# import numpy as np
-# print('numpy: {}'.format(np.__version__))
-# import scipy
-# print('scipy: {}'.format(scipy.__version__))
-# import matplotlib
-# print('matplotlib: {}'.format(matplotlib.__version__))
-# import sklearn 
-# print('sklearn: {}'.format(sklearn.__version__))
-# import requests
-# from pathlib import Path
+import sys 
+print('Python: {}'.format(sys.version))
+import pandas as pd
+print("pandas:", pd.__version__)
+import numpy as np
+print('numpy: {}'.format(np.__version__))
+import scipy
+print('scipy: {}'.format(scipy.__version__))
+import matplotlib
+print('matplotlib: {}'.format(matplotlib.__version__))
+import sklearn 
+print('sklearn: {}'.format(sklearn.__version__))
+import requests
+from pathlib import Path
 
-# # ZTF 
+# ZTF 
 
-# DATA_DIR = Path("data")
-# DATA_DIR.mkdir(exist_ok=True)
-# from io import StringIO
+DATA_DIR = Path("data")
+DATA_DIR.mkdir(exist_ok=True)
+from io import StringIO
 
-# ZTF_BASE_URL = "https://irsa.ipac.caltech.edu/cgi-bin/ZTF/nph_light_curves"
+ZTF_BASE_URL = "https://irsa.ipac.caltech.edu/cgi-bin/ZTF/nph_light_curves"
 
-# def get_ztf_lightcurve_pos(ra_deg, dec_deg):
-#     """
-#     Get a ZTF light curve near (ra_deg, dec_deg).
-#     No login, no extra options, just the defaults.
-#     """
-#     params = {
-#         "POS": f"CIRCLE {ra_deg} {dec_deg} 0.0014",  # 0.0014 deg ~ 5 arcsec
-#         "BANDNAME": "r",                             # just r band for now
-#         "FORMAT": "CSV",
-#     }
+def get_ztf_lightcurve_pos(ra_deg, dec_deg):
+    """
+    Get a ZTF light curve near (ra_deg, dec_deg).
+    No login, no extra options, just the defaults.
+    """
+    params = {
+        "POS": f"CIRCLE {ra_deg} {dec_deg} 0.0014",  # 0.0014 deg ~ 5 arcsec
+        "BANDNAME": "r",                             # just r band for now
+        "FORMAT": "CSV",
+    }
 
-#     r = requests.get(ZTF_BASE_URL, params=params, timeout=60)
-#     print("URL used:", r.url)        # so you can see the full request
-#     r.raise_for_status()
+    r = requests.get(ZTF_BASE_URL, params=params, timeout=60)
+    print("URL used:", r.url)        # so you can see the full request
+    r.raise_for_status()
 
-#     df = pd.read_csv(StringIO(r.text), comment="#")
-#     return df
+    df = pd.read_csv(StringIO(r.text), comment="#")
+    return df
 
-# ra_test, dec_test = 255.9302, 11.8654
+ra_test, dec_test = 255.9302, 11.8654
 
-# df_ztf = get_ztf_lightcurve_pos(ra_test, dec_test)
+df_ztf = get_ztf_lightcurve_pos(ra_test, dec_test)
 
-# print(df_ztf.head())
-# print(df_ztf.columns)
+print(df_ztf.head())
+print(df_ztf.columns)
 
-# #{
+# 
 # def extract_basic_features(df, time_col="mjd", mag_col="mag"):
 #     """
 #     Take a ZTF light-curve DataFrame and return a few simple summary features.
@@ -80,4 +80,4 @@
 # # use mjd + mag from the table you just got
 # features_one = extract_basic_features(df_ztf, time_col="mjd", mag_col="mag")
 # print(features_one)
-print("THIS IS MADDIE TS")
+# print("THIS IS MADDIE TS")
